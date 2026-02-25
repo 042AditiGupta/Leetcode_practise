@@ -9,7 +9,7 @@ class Solution {
         int low=1;
         int high=max;
         int sum=0;
-        int k=1;
+        int ans=1;
         //binary search solution
         while(low<=high){
 
@@ -17,11 +17,11 @@ class Solution {
             sum=0;
             for(int i=0;i<piles.length;i++)
             {
-            sum+=Math.ceil((double)piles[i]/mid);
+             sum+=Math.ceil((double)piles[i]/mid);
             }
             if(sum<=h)
             {
-                k=mid;
+                ans=mid;
                 high=mid-1;
               
             }
@@ -30,6 +30,8 @@ class Solution {
                 low=mid+1;
             }
         }
-        return k;
+        return ans;
     }
 }
+
+// tc is 0(n)* log(max_ele)
