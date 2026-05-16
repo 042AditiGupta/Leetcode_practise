@@ -31,14 +31,7 @@ class Solution {
 
         for(String ele:map.keySet())
         {
-            for(String ele1:map1.keySet())
-            {
-                if(ele.equals(ele1))
-                {
-                    if( map.get(ele)==1 && map1.get(ele1)==1)
-                    count++;
-                }
-            }
+            if(map.get(ele)==1 && map1.getOrDefault(ele,0)==1)count++;
         }
         return count;
 
