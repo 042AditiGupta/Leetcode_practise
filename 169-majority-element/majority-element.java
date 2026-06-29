@@ -1,12 +1,12 @@
 class Solution {
     public int majorityElement(int[] nums) {
+        //using optimal solution
         HashMap<Integer,Integer>map=new HashMap<>();
-        int freq=0;
-        int n=nums.length;
         for(int i=0;i<nums.length;i++)
         {
-            if(map.containsKey(nums[i])){
-                freq=map.get(nums[i]);
+            if(map.containsKey(nums[i]))
+            {
+                int freq=map.get(nums[i]);
                 map.put(nums[i],freq+1);
             }
             else
@@ -14,10 +14,13 @@ class Solution {
                 map.put(nums[i],1);
             }
         }
-        for(int key:map.keySet())
+        for(int ele:map.keySet())
         {
-            if(map.get(key)>n/2)return key;
+            if(map.get(ele)>nums.length/2)
+            {
+                return ele;
+            }
         }
-        return -1;
+        return 0;
     }
 }
