@@ -13,11 +13,19 @@ class Solution {
                 map.put(nums[i],1);
             }
         }
-        for(int ele:map.keySet())
+        // for(int ele:map.keySet())
+        // {
+        //     if(map.get(ele)==1)
+        //     {
+        //         return ele;
+        //     }
+        // }
+        // return 1;
+        for(int i=0;i<nums.length;i++)
         {
-            if(map.get(ele)==1)
+            if(map.get(nums[i])==1)
             {
-                return ele;
+                return nums[i];
             }
         }
         return 1;
