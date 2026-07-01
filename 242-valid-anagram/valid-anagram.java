@@ -1,35 +1,17 @@
 class Solution {
     public boolean isAnagram(String s, String t) {
-        HashMap<Character,Integer>map=new HashMap<>();
-        //storing the occurence of all the characters in string
-        if(s.length()!=t.length())return false;
-        for(int i=0;i<s.length();i++)
+        if(s.length()!=t.length())
         {
-            if(map.containsKey(s.charAt(i)))
-            {
-                int freq=map.get(s.charAt(i));
-                map.put(s.charAt(i),freq+1);
-            }
-            else
-            {
-                map.put(s.charAt(i),1);
-            }
+            return false;
         }
-        //traversing in t string
-        for(int i=0;i<t.length();i++)
+        char []s1=s.toCharArray();
+        char []t1=t.toCharArray();
+        Arrays.sort(s1);
+        Arrays.sort(t1);
+        for(int i=0;i<s1.length;i++)
         {
-            if(map.containsKey(t.charAt(i)))
-            {
-               map.put(t.charAt(i),map.get(t.charAt(i))-1);
-
-            }
+            if(s1[i]!=t1[i])return false;
         }
-        boolean flag=true;
-        for(int val:map.values())
-        {
-            if(val!=0)return false;
-
-        }
-        return flag;
+        return true;
     }
 }
