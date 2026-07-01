@@ -20,28 +20,21 @@ class Solution {
         }
         if(i==m)
         {
-            while(j<nums2.length)
+            while(j<n)
             {
-                nums3[k]=nums2[j];
-                k++;
-                j++;
+                nums3[k++]=nums2[j++];
             }
         }
-        if(j==nums2.length)
+        if(j==n)
         {
             while(i<m)
             {
-                nums3[k]=nums1[i];
-                i++;
-                k++;
+                nums3[k++]=nums1[i++];
             }
         }
-        for(int l=0;l<nums3.length;l++)
+        for(int p=0;p<nums3.length;p++)
         {
-           if(l<nums1.length)
-           {
-             nums1[l]=nums3[l];
-           }
+            nums1[p]=nums3[p];
         }
         
     }
