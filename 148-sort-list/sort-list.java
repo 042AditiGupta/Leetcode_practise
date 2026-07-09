@@ -27,3 +27,6 @@ class Solution {
         return head;
     }
 }
+
+// O(2*N + N*LogN), we traverse the linked list, store its elements in an array, sort it, and then copy the sorted values back into the original list.
+// O(N) , additional space required to store all the elements of linked list in an array.
