@@ -10,10 +10,9 @@
  */
 class Solution {
     public ListNode sortList(ListNode head) {
-        //divide the linked list into two halves - lefthalf and righthalf by  finding middle of the node
+        ListNode fast=head;
         ListNode slow=head;
         if(head==null || head.next==null)return head;
-        ListNode fast=head;
         while(fast.next!=null && fast.next.next!=null)
         {
             fast=fast.next.next;
@@ -25,37 +24,36 @@ class Solution {
         firstHalf=sortList(firstHalf);
         secondHalf=sortList(secondHalf);
         return mergeList(firstHalf,secondHalf);
-
     }
     public ListNode mergeList(ListNode list1,ListNode list2)
     {
+        
+        ListNode dummy=new ListNode (-1);
+        ListNode t3=dummy;
         ListNode t1=list1;
         ListNode t2=list2;
-        ListNode dummy=new ListNode(-1);
-        ListNode temp=dummy;
         while(t1!=null && t2!=null)
         {
             if(t1.val<=t2.val)
             {
-                temp.next=t1;
+                t3.next=t1;
                 t1=t1.next;
             }
             else
             {
-                temp.next=t2;
+                t3.next=t2;
                 t2=t2.next;
             }
-            temp=temp.next;
+        t3=t3.next;
         }
         if(t1!=null)
         {
-            temp.next=t1;
-            t1=t1.next;
+            t3.next=t1;
         }
         if(t2!=null)
         {
-            temp.next=t2;
-            t2=t2.next;
+            t3.next=t2;
+            
         }
         return dummy.next;
     }
