@@ -1,25 +1,24 @@
 class Solution {
     public int majorityElement(int[] nums) {
-        HashMap<Integer,Integer>map=new HashMap<>();
-        for(int i=0;i<nums.length;i++)
+        //optimal approach -> best approach is boyer moore voting algorithm
+        int count=0;
+        int candidate=0;
+        for(int ele:nums)
         {
-            if(map.containsKey(nums[i]))
+            if(count==0)
             {
-                int freq=map.get(nums[i]);
-                map.put(nums[i],freq+1);
+                 candidate=ele;
+                 count++;
+            }
+            else if( candidate==ele)
+            {
+                count++;
             }
             else
             {
-                map.put(nums[i],1);
+                count--;
             }
         }
-        for(int ele:map.keySet())
-        {
-            if(map.get(ele)>nums.length/2)
-            {
-                return ele;
-            }
-        }
-        return -1;
+        return  candidate;
     }
 }
