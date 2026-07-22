@@ -3,23 +3,21 @@ class Solution {
         int n=nums.length;
         int []prefixProduct=new int[n];
         int []suffixProduct=new int[n];
-        int []ans=new int[n];
+        // finding the prefixproduct
         prefixProduct[0]=1;
-        //prefix product
-        for(int i=1;i<nums.length;i++)
+        for(int i=1;i<n;i++)
         {
-           prefixProduct[i]=prefixProduct[i-1]*nums[i-1]; 
+            prefixProduct[i]=prefixProduct[i-1]*nums[i-1];
         }
-        //suffix product
+        //finding the suffixproduct
         suffixProduct[n-1]=1;
-        for(int i=n-2;i>=0;i--)
-        {
+        for(int i=n-2;i>=0;i--){
             suffixProduct[i]=suffixProduct[i+1]*nums[i+1];
         }
         for(int i=0;i<n;i++)
-        {   
-            ans[i]=prefixProduct[i]*suffixProduct[i];
+        {
+            suffixProduct[i]*=prefixProduct[i];
         }
-        return ans;
+        return suffixProduct;
     }
 }
