@@ -2,16 +2,19 @@ class Solution {
     public int findGCD(int[] nums) {
         int max=Integer.MIN_VALUE;
         int min=Integer.MAX_VALUE;
+        //first, finding min and max value
         for(int i=0;i<nums.length;i++)
         {
-            max=Math.max(max,nums[i]);
-            min=Math.min(min,nums[i]);
+            max=Math.max(nums[i],max);
+            min=Math.min(nums[i],min);
         }
-        return gcd(min,max);
-    }
-    public int gcd(int a,int b)
-    {
-        if(b%a==0)return a;
-        return gcd(b%a,a);
+        for(int i=min;i>=1;i--)
+        {
+            if(max%i==0 && min%i==0)
+            {
+                return i;
+            }
+        }
+        return 1;
     }
 }
