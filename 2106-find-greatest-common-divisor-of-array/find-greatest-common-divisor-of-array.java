@@ -7,7 +7,7 @@ class Solution {
             max=Math.max(nums[i],max);
             min=Math.min(nums[i],min);
         }
-        return hcf(min,max);
+        return hcf(max,min);
     }
     public int hcf(int a,int b)
     {
