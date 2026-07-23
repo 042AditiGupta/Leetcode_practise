@@ -8,13 +8,11 @@ class Solution {
             max=Math.max(nums[i],max);
             min=Math.min(nums[i],min);
         }
-        for(int i=min;i>=1;i--)
-        {
-            if(max%i==0 && min%i==0)
-            {
-                return i;
-            }
-        }
-        return 1;
+        return gcd(max,min);
+    }
+    public int gcd(int max,int min)
+    {
+        if(max%min==0)return min;
+        return gcd(min,max%min);
     }
 }
