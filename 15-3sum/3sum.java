@@ -1,41 +1,31 @@
 class Solution {
-    public List<List<Integer>> threeSum(int[] nums) {
-
-        List<List<Integer>>ans=new ArrayList<>();
-        //optimal approach using 2 pointers
-        //sort the array
-        Arrays.sort(nums);
-        for(int i=0;i<nums.length;i++)
-        {
-            //skip duplicates for first element We only want to skip when the current element is the same as the previous one (duplicate).
-            if(i>0 && nums[i]==nums[i-1] )continue;
-
-            int left=i+1;
-            int right=nums.length-1;
-            while(left<right)
+    public List<List<Integer>> threeSum(int[] arr) {
+       List<List<Integer>>ans =new ArrayList<>();
+       int  n=arr.length;
+       Arrays.sort(arr);
+       for(int i=0;i<arr.length;i++)
+       {
+            if(i>0 && arr[i]==arr[i-1])continue;
+            int j=i+1;
+            int k=n-1;
+            while(j<k){
+            int sum=arr[i]+arr[j]+arr[k];
+            if(sum==0)
             {
-                int sum=nums[i]+nums[left]+nums[right];
-                if(sum==0)
-                {
-                    ans.add(Arrays.asList(nums[i],nums[left],nums[right]));
-                    left++;
-                    right--;
-                    //skip duplicates for left 
-                    while(left<right && nums[left]==nums[left-1])left++;
-                    //skip duplicates for right
-                    while(left<right && nums[right]==nums[right+1])right--;
-                }
-                else if(sum<0)
-                {
-                    left++;
-                }    
-                else
-                {
-                    right--;
-                }
+                ans.add(Arrays.asList(arr[i],arr[j],arr[k]));
+                j++;
+                k--;
+                while(j<k && arr[j]==arr[j-1])j++;
+                while(j<k && arr[k]==arr[k+1])k--;
+                
             }
-            
-        }
-        return ans;
+            else if(sum<0)
+            {
+                j++;
+            }
+            else if(sum>0)k--;
+       }
+       }
+       return ans;
     }
 }
