@@ -1,20 +1,32 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        int sum=0;
-        int []res=new int[2];
-        HashMap<Integer,Integer>map=new HashMap<>();
-        for(int i=0;i<nums.length;i++)
+        int n=nums.length;
+        int [][]arr=new int[n][2];
+        for(int i=0;i<n;i++)
         {
-            int rem=target-nums[i];
-            if(map.containsKey(rem))
+            arr[i][0]=nums[i];
+            arr[i][1]=i;
+        }
+        Arrays.sort(arr,(a,b)->Integer.compare(a[0],b[0]));
+
+        int left=0;
+        int right=n-1;
+        while(left<right)
+        {
+            int sum=arr[left][0]+arr[right][0];
+            if(sum==target)
             {
-                res[0]=i;
-                res[1]=map.get(rem);            }
+                return new int []{arr[left][1],arr[right][1]};
+            }
+            else if(sum<target)
+            {
+                left++;
+            }
             else
             {
-                map.put(nums[i],i);
+                right--;
             }
         }
-        return res;
-    }    
+        return new int[]{-1,-1};
+    }
 }
