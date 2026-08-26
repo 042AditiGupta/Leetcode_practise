@@ -1,24 +1,22 @@
 class Solution {
     public int majorityElement(int[] nums) {
-        //optimal approach -> best approach is boyer moore voting algorithm
+        //brute force
         int count=0;
-        int candidate=0;
-        for(int ele:nums)
+        int n=nums.length;
+        for(int i=0;i<nums.length;i++)
         {
-            if(count==0)
+            count=0;
+            for(int j=0;j<nums.length;j++)
             {
-                 candidate=ele;
-                 count++;
+                if(nums[i]==nums[j])
+                {
+                    count++;
+                    
+                }
+                
             }
-            else if( candidate==ele)
-            {
-                count++;
-            }
-            else
-            {
-                count--;
-            }
+            if(count>n/2)return nums[i];
         }
-        return  candidate;
+        return -1;
     }
 }
