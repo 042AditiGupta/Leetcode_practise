@@ -3,14 +3,15 @@ class Solution {
         HashMap<Character,Integer>map=new HashMap<>();
         for(int i=0;i<s.length();i++)
         {
+            char ch=s.charAt(i);
             if(!map.containsKey(s.charAt(i)))
             {
-                map.put(s.charAt(i),1);
+                map.put(ch,1);
             }
             else
             {
-                int freq=map.get(s.charAt(i));
-                map.put(s.charAt(i),freq+1);
+                int freq=map.get(ch);
+                map.put(ch,freq+1);
             }
         }
         for(int i=0;i<s.length();i++)
@@ -18,6 +19,7 @@ class Solution {
             if(map.get(s.charAt(i))==1)
             {
                 return i;
+
             }
         }
         return -1;
